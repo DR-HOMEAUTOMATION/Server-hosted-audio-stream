@@ -17,11 +17,11 @@ app.use(express.json());
 
 app.get('/', (req, res) => {
   res.json({
-    message: '🦄🌈✨👋🌎🌍🌏✨🌈🦄'
+    message: 'you made it to the slash route'
   });
 });
 
-app.use('/api/v1', api);
+app.use('/api', api);
 
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
