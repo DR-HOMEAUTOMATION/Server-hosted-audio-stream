@@ -1,25 +1,30 @@
 const mic = require('mic')
 const fs = require('fs') 
-const express = require('express');
+const express = require('express')
 
 const router = express.Router();
-
-const micInstance = mic({
-  rate:16000,
-  channels:'1',
-  debug:true,
-  exitOnSilence:10,
-})
 
 
 // should look something like this: 
 
 router.get('/',(req,res,next)=>{
-  const micInput = micInstance.getAudioStream()
-  micInput.pipe(res);
-  micInput.on('processExitComplete',()=>{
-    res.send(); 
+	res.setHeader('Content-Type','audio/wave')
+  const micInstance = mic({
+	rate:16000,
+	channels:'1',
+	debug:true,
+	exitOnSilence:10,
+	device:'hw:1,0',
+	fileType: 'wav'
   })
+  const micInput = micInstance.getAudioStream()
+	micInput.pipe(res)
+  micInput.on('silence',()=>{
+	console.log('Sending data now!')
+	micInstance.stop();
+  });
+
+	micInput.on('error',(err)=>console.log(err));	
   micInstance.start();
 })
 
