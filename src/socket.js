@@ -110,3 +110,6 @@ server.on('connection',(socket)=>{
 })
 
 micInstance.start()
+
+
+module.exports = server; 
