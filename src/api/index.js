@@ -1,7 +1,9 @@
 const mic = require('mic')
-const fs = require('fs') 
+const fs = require('fs')
 const express = require('express')
-
+const app = express();
+const http = require('http').Server(app); 
+const io = require('socket.io')(http); 
 const router = express.Router();
 
 
@@ -26,6 +28,13 @@ router.get('/',(req,res,next)=>{
 
 	micInput.on('error',(err)=>console.log(err));	
   micInstance.start();
+})
+
+io.on('connect',(socket)=>{
+	console.log('a user has connected',socket)
+	socket.on('disconnect',()=>{
+		console.log('the user has disconnected');
+	})
 })
 
 // Example: stream audio file
