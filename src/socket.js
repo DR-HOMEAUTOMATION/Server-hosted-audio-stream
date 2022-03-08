@@ -20,7 +20,7 @@ const micInstance = mic({
 	rate:16000,
 	channels:'1',
 	exitOnSilence:10,
-	device:"hw:1,0",
+	device:"hw:2,0",
 	fileType:'wav'
 })
 
@@ -78,8 +78,8 @@ micInput.on('data',(data)=>{
 	}
 })
 
-micInput.on('silence',()=>{
-console.log('shhh'); 
+micInput.on('error',(data)=>{
+	console.log(data);
 })
 
 server.listen(port,host,()=>{
@@ -108,5 +108,4 @@ server.on('connection',(socket)=>{
 	})
 	
 })
-
 micInstance.start()
