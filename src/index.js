@@ -27,10 +27,9 @@ const routes = {
 }
 
 
-app.get('/', (req, res) => {
-  res.json({
-    message: 'you made it to the slash route'
-  });
+app.get('/exit', (req, res) => {
+  res.json(routes);
+  socketServer.close(()=>console.log('socket closed'))
 });
 
 app.use(middlewares.notFound);
