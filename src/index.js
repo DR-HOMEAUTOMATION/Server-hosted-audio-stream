@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 
+const {audioServer,sockets} = require('./socket')
 const packageJson = require('../package.json')
 const ServerUpdater = require('./autoUpdater')
 
@@ -30,9 +31,18 @@ const middlewares = require('./middlewares');
 
 
 
-app.get('/exit', (req, res) => {
+app.get('/', (req, res) => {
   res.json(routes);
-  socketServer.close(()=>console.log('socket closed'))
+});
+
+app.get('/exit', (req, res) => {
+  res.json('server closing');
+  process.exit(1)
+});
+
+app.get('/update', (req, res) => {
+  res.json('updating server');
+  updater.update(); 
 });
 
 app.use(middlewares.notFound);

@@ -1,7 +1,7 @@
 {
-  "name": "express-api-starter",
+  "name": "server-hosted-audio-stream",
   "version": "1.2.0",
-  "description": " A basic starter for an express.js API",
+  "description": "An express api which servers a stream of audio data collected by the microphone.",
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
@@ -10,10 +10,10 @@
     "test": "mocha --exit"
   },
   "keywords": [],
-  "author": "CJ R. <cj@null.computer> (https://w3cj.now.sh)",
+  "author": "Dawson Reschke",
   "repository": {
     "type": "git",
-    "url": "https://github.com/w3cj/express-api-starter.git"
+    "url": "https://github.com/DR-HOMEAUTOMATION/Server-hosted-audio-stream"
   },
   "license": "MIT",
   "dependencies": {

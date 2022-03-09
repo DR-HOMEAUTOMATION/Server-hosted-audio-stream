@@ -1,7 +1,7 @@
 const mic = require('mic'); 
 
 const net = require('net')
-const server = net.createServer()
+const audioServer = net.createServer()
 
 const host = "10.0.0.186"
 const port = 3000
@@ -82,12 +82,12 @@ micInput.on('error',(data)=>{
 	console.log(data);
 })
 
-server.listen(port,host,()=>{
+audioServer.listen(port,host,()=>{
 	console.log(`server listening at ${host}:${port}`);
 })
 
 
-server.on('connection',(socket)=>{
+audioServer.on('connection',(socket)=>{
 	micInstance.resume();
 	let clientAddress = `${socket.remoteAddress}:${socket.remotePort}`
 	console.log(`a new user connected: ${clientAddress}`)
@@ -111,4 +111,4 @@ server.on('connection',(socket)=>{
 micInstance.start()
 
 
-module.exports = server; 
+module.exports = {audioServer,sockets}; 
