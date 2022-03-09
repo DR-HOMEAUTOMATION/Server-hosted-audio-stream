@@ -20,8 +20,8 @@ const gitConfig = {
   repository: packageJson.repository.url ,
   formReleases:false,
   branch:'raspi-dev',
-  tempLocation:'C:/updatedFileSave',
-  executeOnComplete:`npm start`,
+  tempLocation:'/home/pi/backups/SHAS',
+  executeOnComplete:`sh start.sh`,
   exitOnComplete:true
 }
 
