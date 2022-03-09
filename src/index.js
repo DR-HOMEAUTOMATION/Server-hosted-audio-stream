@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 
-const {audioServer,sockets} = require('./socket')
+const {audioServer,sockets,micInstance} = require('./socket')
 const packageJson = require('../package.json')
 const ServerUpdater = require('./autoUpdater')
 
@@ -42,6 +42,7 @@ app.get('/exit', (req, res) => {
 
 app.get('/update', (req, res) => {
   res.json('updating server');
+  micInstance.stop();
   updater.update(); 
 });
 

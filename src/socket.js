@@ -110,5 +110,4 @@ audioServer.on('connection',(socket)=>{
 })
 micInstance.start()
 
-
-module.exports = {audioServer,sockets}; 
+module.exports = {audioServer,sockets,micInstance}; 
