@@ -16,10 +16,10 @@ class ServerUpdater {
     }
 
     update(){
+        this.http.forEach(server=>this.serverShutdown(server))
         this.tcp.forEach(({server,clients})=>{
             this.serverShutdown(server,clients)
         })
-        this.http.forEach(server=>this.serverShutdown(server))
         this.updater.forceUpdate() // this will update from  git, hard reset the program 
     }
 
