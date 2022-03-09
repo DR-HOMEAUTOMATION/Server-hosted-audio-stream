@@ -1,6 +1,6 @@
 {
   "name": "server-hosted-audio-stream",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "An express api which servers a stream of audio data collected by the microphone.",
   "main": "index.js",
   "scripts": {
